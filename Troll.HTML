@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Loading...</title>
+  <script>
+    async function trollUser() {
+      const res = await fetch("https://ipwho.is/");
+      const data = await res.json();
+      
+      if (data.success) {
+        const location = `${data.city}, ${data.region}, ${data.country}`;
+        const isp = data.connection?.isp || "nhà mạng không xác định";
+        alert(`👀 Chào bạn ở ${location} – ${isp},\nHôm nay trời đẹp lắm, nhớ ra ngoài đi dạo nhé 😏`);
+      } else {
+        alert("Không thể định vị bạn... nhưng ta biết bạn đang run run đó 😆");
+      }
+
+      // Sau vài giây thì chuyển hướng tới nội dung thật
+      setTimeout(() => {
+        window.location.href = "https://youtu.be/dQw4w9WgXcQ"; // Link troll thật sự
+      }, 3000);
+    }
+
+    window.onload = trollUser;
+  </script>
+</head>
+<body>
+  <h2>Đang tải nội dung...</h2>
+</body>
+</html>
